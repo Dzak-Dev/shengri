@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Hari Lahir QOLMES!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Selamat Hari Lahir QOLMES!</h1>
+            <p class="subtitle">Assalamualaikum, bro!</p>
+            <p class="subtitle-mobile"></p>
+        </header>
+        
+        <section class="message">
+            <p>Yo ALIF HAIQAL,</p>
+            <p class="full-message">Semoga Allah SWT memberkati hari lahirmu! InsyaAllah.</p>
+            <p class="short-message">Semoga Allah SWT memberkati hari lahirmu! InsyaAllah.</p>
+            <p>Dari: Brian Jack</p>
+        </section>
+        
+        <section class="wishes">
+            <div class="wish-card">
+                <h2>🎉 Impian Tercapai!</h2>
+                <p class="full-wish">Semoga impianmu dimakbulkan oleh Allah SWT! 🚀</p>
+                <p class="short-wish">Semoga impianmu dimakbulkan oleh Allah SWT! 🚀</p>
+            </div>
+            <div class="wish-card">
+                <h2>🎂 Nikmati Hidupmu!</h2>
+                <p class="full-wish">Sentiasa tersenyum dan raikan setiap detik dengan penuh rasa syukur!🎈</p>
+                <p class="short-wish">Sentiasa tersenyum dan raikan setiap detik dengan penuh rasa syukur!🎈</p>
+            </div>
+        </section>
+        
+        <button id="album-btn" class="interactive-btn">Click Here!</button>
+        <div id="photo-album" class="hidden">
+            <h3>Some Photos</h3>
+            <div class="album-grid">
+                <img src="image1.jpg" alt="Kenangan Hari Lahir 1">
+                <img src="image2.jpg" alt="Kenangan Hari Lahir 2">
+                <img src="image3.jpg" alt="Kenangan Hari Lahir 3">
+                <img src="image4.jpg" alt="Kenangan Hari Lahir 4">
+            </div>
+        </div>
+        
+        <footer>
+            <p></p>
+        </footer>
+    </div>
+
+    <script>
+        const btn = document.getElementById('album-btn');
+        const album = document.getElementById('photo-album');
+        
+        btn.addEventListener('click', () => {
+            album.classList.toggle('hidden');
+            album.classList.toggle('show');
+            btn.textContent = album.classList.contains('show') ? 'Tutup Album' : 'Klik Di Sini!';
+        });
+    </script>
+</body>
+</html>

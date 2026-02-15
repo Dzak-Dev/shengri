@@ -1,0 +1,302 @@
+/* Reset asas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Badan dengan latar belakang gradien biru gelap yang lebih dinamik dan texture */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(-45deg, #1e3c72, #2a5298, #3a7bd5, #4facfe);
+    background-size: 400% 400%;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 2s ease-in-out, gradientShift 4s ease infinite;
+    position: relative;
+    overflow: auto; /* Tukar kepada auto untuk membenarkan scrolling apabila kandungan melebihi viewport */
+}
+
+/* Layer texture menggunakan pseudo-element ::before */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3Cpattern id='lines' patternUnits='userSpaceOnUse' width='20' height='20'%3E%3Cline x1='0' y1='0' x2='20' y2='20' stroke='%23ffffff' stroke-width='1' opacity='0.1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23lines)'/%3E%3C/svg%3E");
+    background-size: 20px 20px; /* Saiz pola */
+    background-repeat: repeat;
+    pointer-events: none; /* Tidak mengganggu interaksi */
+    z-index: -1; /* Di belakang kandungan */
+    animation: textureFloat 6s ease-in-out infinite; /* Animasi halus untuk texture */
+}
+
+/* Animasi fade-in untuk halaman */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Animasi untuk gradien bergerak */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Animasi untuk texture terapung */
+@keyframes textureFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Kontainer utama dengan kesan glassmorphism */
+.container {
+    max-width: 700px; /* Dikurangkan dari 800px */
+    margin: 15px; /* Margin dikurangkan */
+    padding: 30px; /* Padding dikurangkan */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px; /* Radius lebih kecil */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Bayangan lebih ringan */
+    text-align: center;
+    animation: slideUp 1s ease-out;
+    position: relative;
+    z-index: 1; /* Pastikan kontainer di atas texture */
+}
+
+/* Animasi slide-up untuk kontainer */
+@keyframes slideUp {
+    from { transform: translateY(40px); opacity: 0; } /* Translate dikurangkan */
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Header */
+header h1 {
+    font-size: 2.2em; /* Dikurangkan dari 2.5em */
+    color: #FFD700; /* Emas untuk rupa yang lebih meriah */
+    margin-bottom: 8px; /* Margin dikurangkan */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+header .subtitle {
+    font-size: 1.1em; /* Dikurangkan */
+    color: #ddd;
+    margin-bottom: 20px; /* Margin dikurangkan */
+}
+
+header .subtitle-mobile {
+    display: none; /* Tersembunyi secara lalai, ditunjukkan pada mobile */
+}
+
+/* Bahagian mesej */
+.message {
+    margin: 20px 0; /* Margin dikurangkan */
+    font-size: 1em; /* Dikurangkan */
+    line-height: 1.5; /* Garis lebih rapat */
+}
+
+.message p:first-child {
+    font-weight: bold;
+    color: #4facfe;
+}
+
+.full-message {
+    display: block;
+}
+
+.short-message {
+    display: none;
+}
+
+/* Kad-kad ucapan dengan glassmorphism */
+.wishes {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 30px 0; /* Margin dikurangkan */
+}
+
+.wish-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 15px; /* Padding dikurangkan */
+    border-radius: 12px; /* Radius lebih kecil */
+    width: 45%;
+    min-width: 200px; /* Dikurangkan */
+    margin: 8px; /* Margin dikurangkan */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Bayangan lebih ringan */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wish-card:hover {
+    transform: scale(1.03); /* Skala dikurangkan */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.wish-card h2 {
+    font-size: 1.3em; /* Dikurangkan */
+    color: #fff;
+    margin-bottom: 8px; /* Margin dikurangkan */
+}
+
+.full-wish {
+    display: block;
+}
+
+.short-wish {
+    display: none;
+}
+
+/* Butang interaktif - Dijadikan lebih cantik dengan glow dan pulse, warna lebih gelap */
+.interactive-btn {
+    background: linear-gradient(45deg, #1e3c72, #2a5298, #3a7bd5); /* Gradien biru gelap untuk lebih gelap */
+    color: #fff;
+    border: none;
+    padding: 12px 25px; /* Padding dikurangkan */
+    font-size: 1.1em; /* Dikurangkan */
+    border-radius: 25px; /* Lebih bulat */
+    cursor: pointer;
+    margin: 15px 0; /* Margin dikurangkan */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 20px rgba(30, 60, 114, 0.5); /* Glow disesuaikan kepada biru gelap */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: pulse 2s infinite; /* Tambah animasi pulse */
+}
+
+.interactive-btn:hover {
+    transform: scale(1.05); /* Skala dikurangkan */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 0 30px rgba(30, 60, 114, 0.8); /* Glow dipertingkat dengan warna gelap */
+}
+
+/* Animasi pulse untuk butang */
+@keyframes pulse {
+    0% { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 20px rgba(30, 60, 114, 0.5); }
+    50% { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 25px rgba(30, 60, 114, 0.7); }
+    100% { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 20px rgba(30, 60, 114, 0.5); }
+}
+
+/* Bahagian album gambar */
+#photo-album {
+    margin: 15px 0; /* Margin dikurangkan */
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#photo-album.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.hidden {
+    display: none;
+}
+
+#photo-album h3 {
+    font-size: 1.3em; /* Dikurangkan */
+    color: #FFD700;
+    margin-bottom: 15px; /* Margin dikurangkan */
+}
+
+/* Grid album: 2x2 pada desktop, bertindih pada mobile */
+.album-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px; /* Gap dikurangkan */
+    max-width: 500px; /* Dikurangkan */
+    margin: 0 auto;
+}
+
+.album-grid img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1; /* Pastikan nisbah 1:1 */
+    object-fit: cover; /* Potong untuk fit persegi jika tidak tepat 1:1 */
+    border-radius: 8px; /* Radius lebih kecil */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Bayangan lebih ringan */
+    transition: transform 0.3s ease;
+}
+
+.album-grid img:hover {
+    transform: scale(1.03); /* Skala dikurangkan */
+}
+
+/* Footer */
+footer {
+    margin-top: 20px; /* Margin dikurangkan */
+    font-size: 0.8em; /* Dikurangkan */
+    color: #ccc;
+}
+
+/* Responsif untuk mudah alih */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px; /* Dikurangkan lagi */
+        margin: 8px; /* Lebih rapat */
+    }
+    header h1 {
+        font-size: 1.6em; /* Dikurangkan dari 1.8em */
+    }
+    header .subtitle {
+        display: none; /* Sembunyikan subjudul penuh */
+    }
+    header .subtitle-mobile {
+        display: block; /* Tunjukkan subjudul pendek */
+        font-size: 1em; /* Dikurangkan */
+        color: #ddd;
+        margin-bottom: 15px; /* Dikurangkan */
+    }
+    .message {
+        margin: 15px 0; /* Dikurangkan */
+        font-size: 0.9em; /* Lebih kecil */
+        line-height: 1.3; /* Lebih rapat */
+    }
+    .full-message {
+        display: none; /* Sembunyikan mesej penuh */
+    }
+    .short-message {
+        display: block; /* Tunjukkan mesej pendek */
+    }
+    .wishes {
+        margin: 20px 0; /* Dikurangkan */
+    }
+    .wish-card {
+        width: 100%; /* Lebar penuh untuk bertindih */
+        padding: 12px; /* Dikurangkan */
+        margin: 4px 0; /* Lebih rapat */
+    }
+    .wish-card h2 {
+        font-size: 1.1em; /* Lebih kecil */
+    }
+    .full-wish {
+        display: none; /* Sembunyikan teks ucapan penuh */
+    }
+    .short-wish {
+        display: block; /* Tunjukkan teks ucapan pendek */
+    }
+    .interactive-btn {
+        padding: 10px 20px; /* Lebih kecil */
+        font-size: 1em; /* Dikurangkan */
+        margin: 12px 0; /* Dikurangkan */
+    }
+    #photo-album h3 {
+        font-size: 1.1em; /* Lebih kecil */
+        margin-bottom: 12px; /* Dikurangkan */
+    }
+    .album-grid {
+        grid-template-columns: 1fr; /* Bertindih gambar secara menegak */
+        gap: 8px; /* Lebih rapat */
+    }
+    footer {
+        margin-top: 15px; /* Dikurangkan */
+    }
+}
